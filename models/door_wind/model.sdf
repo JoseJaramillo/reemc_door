@@ -170,6 +170,6 @@
         </ode>
       </physics>
     </joint>
-  <plugin name="model_push" filename="libmodel_push.so"/>
+  <plugin name="door_wind" filename="libdoor_wind.so"/>
   </model>
 </sdf>

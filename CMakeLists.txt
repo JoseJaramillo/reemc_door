@@ -4,8 +4,8 @@ project(reemc_door)
 find_package(catkin REQUIRED)
 
 catkin_package()
-
-foreach(dir launch models plugins)
+add_subdirectory(${PROJECT_SOURCE_DIR}/plugins)
+foreach(dir launch models)
     install(DIRECTORY ${dir}/
         DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
 endforeach(dir)

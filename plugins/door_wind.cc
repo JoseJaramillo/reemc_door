@@ -16,7 +16,7 @@ namespace gazebo
       // Listen to the update event. This event is broadcast every
       // simulation iteration.
       this->updateConnection = event::Events::ConnectWorldUpdateBegin(
-          std::bind(&ModelPush::OnUpdate, this));
+          std::bind(&DoorWind::OnUpdate, this));
     }
 
     // Called by the world update start event
@@ -24,10 +24,11 @@ namespace gazebo
     {
 
   
-    gazebo::physics::LinkPtr link=  this->model->GetChildLink("autoclose_door_wind::lever");
-    gazebo::physics::JointPtr joint=  this->model->GetJoint("autoclose_door_wind::joint_door_lever");
-    link->AddRelativeForce(ignition::math::Vector3d(0, 0, -3));
-    link->AddRelativeTorque(ignition::math::Vector3d(0, 0, -5));
+      gazebo::physics::LinkPtr link=  this->model->GetChildLink("door_wind::lever");
+      gazebo::physics::JointPtr joint=  this->model->GetJoint("door_wind::joint_frame_door");
+      if (joint->GetAngle(2).Radian()<-0.7){
+        link->AddRelativeForce(ignition::math::Vector3d(0, 0, 0.8));
+      }
     }
 
     // Pointer to the model
