@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  
+  <arg name="world"  default="simple"/>  <!-- empty,... -->  
+  <arg name="robot"  default="full_ft_hey5"/>  <!-- empty,... -->
+  <arg name="gzpose" default="-x -0.5 -y -0.6 -z 0.85 -R 0.0 -P 0.0 -Y 1.57"/>
+  <arg name="gui" default="true"/>
+  <arg name="debug" default="false"/>
+
+  <!-- start up world -->
+  <env name="GAZEBO_MODEL_PATH" value="$(find reemc_door)/models:$(optenv GAZEBO_MODEL_PATH)"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find reemc_door)/worlds/$(arg world).world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="recording" value="false"/>
+    <arg name="debug" value="false"/>
+
+  </include>
+  <!-- spawn robot in simulation -->
+  <include file="$(find reemc_gazebo)/launch/reemc_spawn.launch">
+    <arg name="robot"  value="$(arg robot)"/>
+    <arg name="gzpose" value="$(arg gzpose)"/>
+  </include>
+
+  <!-- bring up robot -->
+  <include file="$(find reemc_bringup)/launch/reemc_bringup.launch">
+    <arg name="robot"  value="$(arg robot)"/>
+  </include>
+
+</launch>
