@@ -1,4 +1,6 @@
 # reemc_door
+This repository contains the simulation files for the E10 - Open the door episode for the 1st SciRoc Challenge.
+For more information please refer to [this website](https://sites.google.com/view/e10-open-the-door/home).
 ## Installation
 ### Prerequisites:
 - Ubuntu 16.04  (Xenial Xerus).
