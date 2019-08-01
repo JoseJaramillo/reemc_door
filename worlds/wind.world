@@ -29,9 +29,10 @@
       <uri>model://ground_plane</uri>
     </include>
 
-    <!-- A selfclosing door -->
+    <!-- A simple door with wind -->
     <include>
-      <uri>model://door_wind</uri>
+      <uri>model://door_simple</uri>
+      <plugin name="door_wind" filename="libdoor_wind.so"/>
     </include>
 
   </world>

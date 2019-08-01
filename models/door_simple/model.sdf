@@ -19,7 +19,7 @@
       <collision name="frame_collision">
         <geometry>
           <mesh>
-            <uri>model://door_simple/meshes/frame4.stl</uri>
+            <uri>model://door_simple/meshes/frame.stl</uri>
           </mesh>
         </geometry>
       </collision>
@@ -27,7 +27,7 @@
       <visual name="frame_visual">
         <geometry>
           <mesh>
-            <uri>model://door_simple/meshes/frame4.stl</uri>
+            <uri>model://door_simple/meshes/frame.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -43,7 +43,7 @@
     <link name="door">
 
       <inertial>
-        <mass>100.0</mass>
+        <mass>10.0</mass>
         <inertia>
           <ixx>0.030386862790</ixx>   <ixy>-0.000000000330</ixy>    <ixz>0.000000216760</ixz>
                                       <iyy>0.035534743650</iyy>     <iyz>-0.000000000060</iyz>
@@ -54,7 +54,7 @@
       <collision name="door_collision">
         <geometry>
           <mesh>
-            <uri>model://door_simple/meshes/door4.stl</uri>
+            <uri>model://door_simple/meshes/door.stl</uri>
           </mesh>
         </geometry>
       </collision>
@@ -62,7 +62,7 @@
       <visual name="door_visual">
         <geometry>
           <mesh>
-            <uri>model://door_simple/meshes/door4.stl</uri>
+            <uri>model://door_simple/meshes/door.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -77,20 +77,20 @@
 
 
     <link name="lever">
-      <pose>-0.79604 -0.06 1.0 1.5708 0 0</pose>
+      <pose> 0 0.84 0.9552 0 -1.5708 0</pose>
       <inertial>
-        <mass>2.0</mass>
+        <mass>1.0</mass>
         <inertia>
-          <ixx>0.01</ixx>   <ixy>0.00</ixy>     <ixz>0.00</ixz>
-                            <iyy>0.01</iyy>     <iyz>0.00</iyz>
-                                                <izz>0.01</izz>
+          <ixx>0.001</ixx>   <ixy>0.00</ixy>      <ixz>0.00</ixz>
+                             <iyy>0.001</iyy>     <iyz>0.00</iyz>
+                                                  <izz>0.001</izz>
         </inertia>
       </inertial>
 
       <collision name="lever_collision">
         <geometry>
           <mesh>
-            <uri>model://door_simple/meshes/lever4.stl</uri>
+            <uri>model://door_simple/meshes/lever.stl</uri>
           </mesh>
         </geometry>
       </collision>
@@ -98,7 +98,7 @@
       <visual name="lever_visual">
         <geometry>
           <mesh>
-            <uri>model://door_simple/meshes/lever4.stl</uri>
+            <uri>model://door_simple/meshes/lever.stl</uri>
           </mesh>
         </geometry>
         <material>
@@ -136,8 +136,8 @@
           <spring_stiffness>1</spring_stiffness>
         </dynamics-->
         <limit>
-          <lower>-2.0</lower>
-          <upper>0.0</upper>
+          <lower>-0.03</lower>
+          <upper>1.57</upper>
         </limit>
       </axis>
       <physics>
@@ -152,7 +152,7 @@
       <parent>door</parent>
       <child>lever</child>
       <axis>
-        <xyz>0 1 0</xyz>
+        <xyz>1 0 0</xyz>
         <dynamics>
           <damping>0.5</damping>
           <friction>0.01</friction>
@@ -170,6 +170,6 @@
         </ode>
       </physics>
     </joint>
-
+  <plugin name="simple_door_config" filename="libsimple_door_config.so"/>
   </model>
 </sdf>

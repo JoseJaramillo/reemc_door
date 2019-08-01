@@ -14,8 +14,8 @@ namespace gazebo
       // Store the pointer to the model, link and joint
 
       this->model = _parent;
-      this->link=  this->model->GetChildLink("door_wind::lever");
-      this->joint=  this->model->GetJoint("door_wind::joint_frame_door");
+      this->link=  this->model->GetChildLink("door_simple::lever");
+      this->joint=  this->model->GetJoint("door_simple::joint_frame_door");
 
       // Random wind force and direction
       srand(time(0)); 
@@ -24,7 +24,8 @@ namespace gazebo
       wind.X()= wind_force*cos(wind_yawn_direction*3.1416/180);
       wind.Y()= wind_force*sin(wind_yawn_direction*3.1416/180);
       wind.Z()= 0.0;
-      std::cerr  << wind_yawn_direction << " " << wind_force << " " << wind.X() << " " << wind.Y() <<std::endl;
+      std::cerr << "wind yawn: " << wind_yawn_direction << std::endl;
+      std::cerr << "wind force: " << wind_force << std::endl;
       
       
       // Listen to the update event. This event is broadcast every
@@ -37,7 +38,7 @@ namespace gazebo
     public: void OnUpdate()
     {
       //  Apply force at every interaction
-      link->AddForce(ignition::math::Vector3d(wind.X(), wind.Z(), wind.Y()));
+      link->AddForce(ignition::math::Vector3d(wind.X(), wind.Y(), wind.Z()));
 
     }
 

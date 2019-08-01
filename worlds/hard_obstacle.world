@@ -33,7 +33,7 @@
     </include>
     <include>
       <uri>model://hard_obstacle</uri>
-      <pose> -0.3 0.3 0.0 0.0 0.0 0.0 </pose>
+      <pose> -0.03 0.8 0.0 0.0 0.0 0.0 </pose>
     </include>
   </world>
 </sdf>
